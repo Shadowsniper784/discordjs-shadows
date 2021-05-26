@@ -1,3 +1,14 @@
+# Setup
+Cick [here](https://discord.com/developers/applications) and create an application
+Click bot and then add bot
+Copy the token
+Click the lock on the right hand side of your screen
+Paste the token into the TOKEN variable!
+Press run if not already running
+Invite the bot to your server
+And boom!
+
+
 # Command Help
 
 
@@ -23,3 +34,5 @@ SUB_COMMAND = 1,
   USER = 6,
   CHANNEL = 7,
   ROLE = 8,
+
+
