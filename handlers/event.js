@@ -9,8 +9,6 @@ const waitingForDB = {
   isEnabled
 } = []
 class FeatureHandler {
-
-
   constructor(client, instance, dir) {
       const _feature = new Map() // <Feature name, Disabled GuildIDs>
   const _client = client
@@ -39,6 +37,7 @@ class FeatureHandler {
     const files = getAllFiles(dir)
 
     const amount = files.length
+    this._instance.amount = amount
     if (amount === 0) {
       return
     }
@@ -112,6 +111,8 @@ class FeatureHandler {
   const isEnabled = (guildId, feature) => {
     return this._features.get(feature).includes(guildId)
   }
-  return amount
-}}
+} getAmount() {
+  return this._amount
+}
+}
 module.exports = FeatureHandler

@@ -1,7 +1,7 @@
 const fs = require('fs');
 class timer {
-  constructor(instance) {
-    this._instance = instance
+  constructor(dir) {
+    this._dir = dir
   }
 	start(time) {
 		this._time = time;
@@ -9,7 +9,7 @@ class timer {
 
 		const content = this._endTime;
 		fs.writeFile(
-			`${this._instance.dir}/handlers/time.txt`,
+			`${this._dir}/handlers/time.txt`,
 			content,
 			err => {
 				if (err) {
@@ -24,7 +24,7 @@ class timer {
 		let endTime = this._endTime;
 
 		try {
-			const data = fs.readFileSync(`${instance.dir}/handlers/time.txt`, 'utf8');
+			const data = fs.readFileSync(`${this._dir}/handlers/time.txt`, 'utf8');
 		//	console.log(data);
 			endTime = data
 		} catch (err) {

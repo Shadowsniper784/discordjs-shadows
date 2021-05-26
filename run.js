@@ -38,7 +38,7 @@ let { commands } = client;
 		message: '{GUILD}:{CHANNEL}\n{AUTHOR}:{MESSAGE}',
 		consoleMessages: true
 	},
-	slash: true,
+	slash: false,
 	client: client,
 	slashCommands: 'slash',
 	Commands: 'ShadowCommands',
@@ -51,6 +51,7 @@ let { commands } = client;
 	},
 	dir: '/home/runner/discordjs-shadows-1'
 };
+this._instance = instance
     //Shadow Command Handler
 var ShadowCommand = new ShadowCommands(client, instance);
 instance.ShadowCommand = ShadowCommand;
@@ -116,7 +117,7 @@ async function create(client, name, description, options, guildId) {
 const MongoDB = new MongoDb(process.env.MONGO, instance, mongoSettings);
 
 //Timer handler
-this._timerConstructor = new timer(instance)
+this._timerConstructor = new timer(this._instance.dir)
 instance.timer.isEndTime = (now) => {
   return this._timerConstructor.isEndTime(now)
 }
@@ -175,11 +176,11 @@ if (instance.logMessages.consoleMessages) {
 	});
 }
 
-
-
+ShadowCommand.on('commandRun', message => {
+	this._Command.runCommand(message);
+}); //Emitted whenever a message starts with prefix
 ShadowCommand.emit('start');
 module.exports.instance = instance;
-client.login(process.env[instance.tokenVariable]);
 const app = require('./handlers/web.js')()
 return instance
   }
